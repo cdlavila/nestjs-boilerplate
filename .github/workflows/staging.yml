@@ -50,4 +50,10 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-     # Write the steps here
+      - name: Execute remote commands via ssh
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.AWS_HOST_TEST}}
+          username: ${{ secrets.AWS_USER_TEST }}
+          key: ${{ secrets.AWS_KEY_TEST }}
+          script: PATH=$PATH:/usr/bin && sh deploy_staging.sh
