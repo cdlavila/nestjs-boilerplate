@@ -1,30 +1,21 @@
-# Boilerplate NestJS
+# NestJS Boilerplate
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+NestJS Boilerplate for HTTP applications.
 
-# Table of Contents
+We have the following endpoints:
+- `GET /api`
+- `GET /api/status`
+- `POST /api/auth/register`
+- `POST /api/auth/login`
+- `GET /api/auth/refresh`
+- `POST /api/users`
+- `GET /api/users`
+- `GET /api/users/myself`
+- `GET /api/users/:id`
+- `PUT /api/users/:id`
+- `DELETE /api/users/:id`
 
-- [Boilerplate NestJS](#boilerplate-nestjs)
-- [Table of Contents](#table-of-contents)
-    - [Project Description](#project-description)
-    - [Install Instructions](#install-instructions)
-        - [Step 1](#step-1)
-        - [Step 2](#step-2)
-        - [Step 3](#step-3)
-        - [Step 4](#step-4)
-        - [Step 5](#step-5)
-    - [Test Instructions](#test-instructions)
-    - [Integration Sequence](#integration-sequence)
-    - [Other Settings](#other-settings)
-        - [Migration commands](#migration-commands)
-        - [CLI commands](#cli-commands)
-        - [Support](#support)
-
-## Project Description
-
-Boilerplate for Nest.js projects.
-
-## Install Instructions
+## Installation
 
 To install the project, we need to have installed the following tools:
 
@@ -37,7 +28,7 @@ If you don't have Node.js installed, you can install the latest version [here](h
 Clone the project
 
 ```bash
-$ git clone https://github.com/SOLUNTECH/boilerplate-nestjs
+$ git clone https://github.com/cdlavila/nestjs-boilerplate.git
 ```
 
 #### Step 2
@@ -50,15 +41,11 @@ $ npm install
 
 #### Step 3
 
-Create the `.env` file. Then, copy the data from `.env.example` file and give values to the environment variables by
-requesting them from the other developers or the product owner.
+Create the `.env` file. Then, copy the data from `.env.example` file and paste it in the `.env` file. Finally, give values to the environment variables for the development environment.
 
-#### Run the database with Docker (OPTIONAL)
+#### Step 4
 
-If you just started working on the project, and you don't have a development or test database, you can run it locally
-with Docker. Otherwise, you can <b>skip</b> this step.
-
-- Docker and Docker-compose 🐋
+Run the database with Docker and Docker-compose 🐋
 
 If you don't have Docker installed, you can install it following
 the [Docker documentation](https://docs.docker.com/engine/install/)
@@ -72,31 +59,13 @@ If you install Docker Desktop (on Windows and Mac), it comes with docker compose
 </span>
 </blockquote>
 
-Give values to the environment variables of the development database in the `.env` file, by copying and pasting the
-following lines:
-
-```bash
-# Development
-DATABASE_HOST_DEV=localhost
-DATABASE_PORT_DEV=5432
-DATABASE_NAME_DEV=boilerplate
-DATABASE_USER_DEV=boilerplate-user
-DATABASE_PASSWORD_DEV=boilerplate-password
-```
-
 Raise the Docker container that runs the database, by executing the following command in the root of the project:
 
 ```bash
 $ docker-compose up -d
 ```
 
-Additionally, you have to run the migrations to create the tables in the database, by executing the following command:
-
-```bash
-$ npm run migration:run
-```
-
-#### Step 4
+#### Step 5
 
 Run the app
 
@@ -115,7 +84,7 @@ $ npm run start:dev
 $ npm run start:debug
 ```
 
-#### Step 5
+#### Step 6
 
 If the tha app is running correctly, you can see the main route response in the browser, by clicking on the first link
 that appears in the terminal.
@@ -139,46 +108,6 @@ $ npm run test:e2e
 # test coverage
 $ npm run test:cov
 ```
-
-## Integration Sequence
-
-The integration sequence for the staging environment is defined on the file `/.github/workflows/staging.yml`
-It is divided in two jobs
-
-**CI**
-
-1. **Run command npm install:** Install project to generate node_modules folder on GitHub machine
-2. **Create env file:** Generate env file to be able to run subsequent commands on GitHub machine
-3. **Run command test:handshake:** Run handshake test to check the connection with external services
-4. **Run command migration:run:** Run command to migrate the SQL schema and compare it with the PostgreSQL database
-5. **Run command npm test:** Run unit tests. The process stops here if one test fail
-6. **Run command npm test:e2e:** Run integration tests. The process stops here if one test fail
-7. **Perform Sonarqube Scan:** Run sonarqube scan on soluntech.sonarqube.com to check quality code, security
-   vulnerabilities and test coverage
-
-**CD**
-
-This sequence depends on Cloud service that you are going to use, please add the sequence here.
-
-The integration sequence for the production environment is defined in two files, one for the continuos integration and
-one for the continuos delivery that has to be trigger manually. The files are located
-on `/.github/workflows/productionCI.yml` for the continuos integration and `/.github/workflows/productionCD.yml` for the
-continuos delivery
-
-**productionCI.yml**
-
-1. **Run command npm install:** Install project to generate node_modules folder on GitHub machine
-2. **Create env file:** Generate env file to be able to run subsequent commands on GitHub machine
-3. **Run command test:handshake:** Run handshake test to check the connection with external services
-4. **Run command migration:run:** Run command to migrate the SQL schema and compare it with the PostgreSQL database
-5. **Run command npm test:** Run unit tests. The process stops here if one test fail
-6. **Run command npm test:e2e:** Run integration tests. The process stops here if one test fail
-7. **Perform Sonarqube Scan:** Run sonarqube scan on soluntech.sonarqube.com to check quality code, security
-   vulnerabilities and test coverage
-
-**productionCD.yml**
-
-This sequence depends on Cloud service that you are going to use, please add the sequence here.
 
 ## Other Settings
 
@@ -262,8 +191,3 @@ $ npm run guard:generate --module=<module-name> --name=<guard-name>
 # generate a new filter
 $ npm run filter:generate --module=<module-name> --name=<filter-name>
 ```
-
-## Support
-
-- Soluntech - <a href="https://www.soluntech.com/">Website</a>
-- Email - <a href="mailto:developers@soluntech.com">Developers Soluntech</a>
