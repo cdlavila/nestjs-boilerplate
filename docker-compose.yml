@@ -3,7 +3,6 @@ version: '3.8'
 services:
   postgres:
     image: postgres:latest
-    container_name: postgres_db
     env_file: .env
     environment:
       POSTGRES_USER: ${DATABASE_USER_DEV}
@@ -14,9 +13,9 @@ services:
     volumes:
       - ./postgres_data:/var/lib/postgresql/data
     networks:
-      - boilerplate-nestjs # change this to your project name
+      - nestjs-boilerplate # change this to your project name
 networks:
-  boilerplate-nestjs: # change this to your project name
+  nestjs-boilerplate: # change this to your project name
     driver: bridge
 
 # COMMANDS: docker-compose up -d, docker-compose down
