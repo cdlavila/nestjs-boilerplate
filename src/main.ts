@@ -23,7 +23,7 @@ async function bootstrap() {
   const options = new DocumentBuilder()
     .addBearerAuth()
     .setTitle('NestJS Boilerplate API')
-    .setDescription('NestJS Boilerplate API description')
+    .setDescription('NestJS Boilerplate API Description')
     .setVersion('1.0')
     .build();
   const document = SwaggerModule.createDocument(app, options);
