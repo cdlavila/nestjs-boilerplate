@@ -66,4 +66,4 @@ jobs:
             git pull origin master
             npm install
             npm run build
-            sudo pm2 reload 0
+            pm2 reload 0
