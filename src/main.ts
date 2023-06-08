@@ -33,7 +33,7 @@ async function bootstrap() {
 }
 bootstrap().then(() => {
   console.log(
-    `Server started on: http://${process.env.HOST}:${process.env.PORT}/api`,
-    `Swagger documentation on: http://${process.env.HOST}:${process.env.PORT}/docs`,
+    `Server started on: http://localhost:${process.env.PORT}/api`,
+    `\nSwagger documentation on: http://localhost:${process.env.PORT}/docs`,
   );
 });

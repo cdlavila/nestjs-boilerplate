@@ -26,7 +26,6 @@ jobs:
         uses: SpicyPizza/create-envfile@v1.3
         with:
           envkey_NODE_ENV: ${{secrets.NODE_ENV}}
-          envkey_HOST: ${{secrets.HOST}}
           envkey_PORT: ${{secrets.PORT}}
           envkey_JWT_SECRET: ${{secrets.JWT_SECRET}}
           envkey_DATABASE_HOST_PROD: ${{secrets.DATABASE_HOST_PROD}}
@@ -34,6 +33,11 @@ jobs:
           envkey_DATABASE_NAME_PROD: ${{secrets.DATABASE_NAME_PROD}}
           envkey_DATABASE_USER_PROD: ${{secrets.DATABASE_USER_PROD}}
           envkey_DATABASE_PASSWORD_PROD: ${{secrets.DATABASE_PASSWORD_PROD}}
+          envkey_DATABASE_HOST_TEST: ${{secrets.DATABASE_HOST_PROD}}
+          envkey_DATABASE_PORT_TEST: ${{secrets.DATABASE_PORT_PROD}}
+          envkey_DATABASE_NAME_TEST: ${{secrets.DATABASE_NAME_PROD}}
+          envkey_DATABASE_USER_TEST: ${{secrets.DATABASE_USER_PROD}}
+          envkey_DATABASE_PASSWORD_TEST: ${{secrets.DATABASE_PASSWORD_PROD}}
           fail_on_empty: true
       - name: Run handshake
         run: npm run test:handshake
@@ -54,7 +58,12 @@ jobs:
       - name: Execute remote commands via ssh
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.AWS_HOST_PROD }}
-          username: ${{ secrets.AWS_USER_PROD }}
-          key: ${{ secrets.AWS_KEY_PROD }}
-          script: PATH=$PATH:/usr/bin && sh deploy_master.sh
+          host: ${{ secrets.AWS_SSH_HOST }}
+          username: ${{ secrets.AWS_SSH_USER }}
+          key: ${{ secrets.AWS_SSH_KEY }}
+          script: |
+            cd nestjs-boilerplate
+            git pull origin master
+            npm install
+            npm run build
+            sudo pm2 reload 0
