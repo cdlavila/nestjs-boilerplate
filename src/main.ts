@@ -22,7 +22,7 @@ async function bootstrap() {
 
   const options = new DocumentBuilder()
     .addBearerAuth()
-    .setTitle('NestJS Boilerplate')
+    .setTitle('NestJS Boilerplate API')
     .setDescription('NestJS Boilerplate API description')
     .setVersion('1.0')
     .build();
