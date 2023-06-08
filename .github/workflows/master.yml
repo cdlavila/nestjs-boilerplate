@@ -64,6 +64,6 @@ jobs:
           script: |
             cd nestjs-boilerplate
             git pull origin master
-            npm install
-            npm run build
-            pm2 reload 0
+            /home/ubuntu/.nvm/versions/node/v20.3.0/bin/node /home/ubuntu/.nvm/versions/node/v20.3.0/bin/npm install
+            /home/ubuntu/.nvm/versions/node/v20.3.0/bin/node /home/ubuntu/.nvm/versions/node/v20.3.0/bin/npm run build
+            /home/ubuntu/.nvm/versions/node/v20.3.0/bin/node /home/ubuntu/.nvm/versions/node/v20.3.0/bin/pm2 reload 0
