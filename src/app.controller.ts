@@ -10,7 +10,7 @@ export class AppController {
   @ApiOperation({ summary: 'Returns the welcome message' })
   @ApiResponse({
     status: 200,
-    schema: { example: 'Welcome to the Boilerplate API!' },
+    schema: { example: 'Welcome to the NestJS Boilerplate API!' },
   })
   @Get()
   sayWelcome(): string {
