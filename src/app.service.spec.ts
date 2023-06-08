@@ -13,8 +13,10 @@ describe('AppService', () => {
   });
 
   describe('root', () => {
-    it('Should return "Welcome to the Boilerplate API!"', () => {
-      expect(appService.getWelcome()).toBe('Welcome to the Boilerplate API!');
+    it('Should return "Welcome to the NestJS Boilerplate API!"', () => {
+      expect(appService.getWelcome()).toBe(
+        'Welcome to the NestJS Boilerplate API!',
+      );
     });
 
     it('Should return { status: "OK" }', () => {
