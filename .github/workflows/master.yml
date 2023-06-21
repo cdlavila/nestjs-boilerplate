@@ -55,6 +55,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+      - name: Add Node.js to PATH
+        run: |
+          echo 'PATH="/home/ubuntu/.nvm/versions/node/v20.3.0/bin/node:$PATH"' >> $GITHUB_ENV
       - name: Execute remote commands via ssh
         uses: appleboy/ssh-action@master
         with:
