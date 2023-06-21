@@ -61,9 +61,11 @@ jobs:
           host: ${{ secrets.AWS_SSH_HOST }}
           username: ${{ secrets.AWS_SSH_USER }}
           key: ${{ secrets.AWS_SSH_KEY }}
+          env:
+            PATH: ${{ env.PATH }}:/home/ubuntu/.nvm/versions/node/v20.3.0/bin/
           script: |
             cd nestjs-boilerplate
             git pull origin master
-            /home/ubuntu/.nvm/versions/node/v20.3.0/bin/node /home/ubuntu/.nvm/versions/node/v20.3.0/bin/npm install
-            /home/ubuntu/.nvm/versions/node/v20.3.0/bin/node /home/ubuntu/.nvm/versions/node/v20.3.0/bin/npm run build
-            /home/ubuntu/.nvm/versions/node/v20.3.0/bin/node /home/ubuntu/.nvm/versions/node/v20.3.0/bin/pm2 reload 0
+            npm install
+            npm run build
+            pm2 reload 0
