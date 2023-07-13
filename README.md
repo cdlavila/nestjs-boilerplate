@@ -62,7 +62,7 @@ If you install Docker Desktop (on Windows and Mac), it comes with docker compose
 Raise the Docker container that runs the database, by executing the following command in the root of the project:
 
 ```bash
-$ docker-compose up -d
+$ docker-compose up -d postgres
 ```
 
 #### Step 5
